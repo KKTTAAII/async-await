@@ -11,7 +11,7 @@ async function getRandomPokemonURLs(all) {
   return randomPokemonsURLs;
 }
 
-async function getSpecies(pokemons) {
+async function getSpeciesURLs(pokemons) {
   let selectSpeciesURLs = [];
   pokemons.forEach((p) => {
     selectSpeciesURLs.push(axios.get(p.data.species.url));
@@ -42,8 +42,8 @@ async function getPokemons() {
   const allPokemons = res2.data.results;
   const randomPokemons = await getRandomPokemonURLs(allPokemons);
   const pokemons = await Promise.all(randomPokemons);
-  const species = await getSpecies(pokemons);
-  const speciesData = await Promise.all(species);
+  const speciesURLs = await getSpeciesURLs(pokemons);
+  const speciesData = await Promise.all(speciesURLs);
   const details = await getSpeciesDetail(speciesData);
   console.log(details);
 }
