@@ -11,12 +11,16 @@ function addFactsToPage(fact) {
 }
 
 async function getFacts() {
-  for (const num of favNumbers) {
-    let res = await axios.get(`${URL}${num}?json`);
-    facts[num] = res.data.text;
-  }
-  for (const fact in facts) {
-    addFactsToPage(facts[fact]);
+  try {
+    for (const num of favNumbers) {
+      let res = await axios.get(`${URL}${num}?json`);
+      facts[num] = res.data.text;
+    }
+    for (const fact in facts) {
+      addFactsToPage(facts[fact]);
+    }
+  } catch(e) {
+    console.log("error", e)
   }
 }
 
