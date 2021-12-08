@@ -1,6 +1,6 @@
 const URL = "http://numbersapi.com/";
 const favNumbers = [2, 13, 18, 25];
-let facts = {};
+const facts = {};
 const parentDiv = document.querySelector(".all-nums");
 
 function addFactsToPage(fact) {
